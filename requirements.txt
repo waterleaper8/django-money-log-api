@@ -1,0 +1,7 @@
+django==3.0.7
+djangorestframework==3.10
+djangorestframework-simplejwt==4.6.0
+PyJWT==2.0.0
+djoser
+pillow
+django-cors-headers
