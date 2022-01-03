@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-from .models import Bill, User
+from .models import Bill, User, Pocket
 
 class UserSerializer(serializers.ModelSerializer):
 
@@ -24,4 +24,10 @@ class BillSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Bill
-        fields = ['id', 'create_user', 'isCalc', 'date', 'title', 'amount', 'pocket', 'category', 'subcategory', 'memo']
+        fields = ['id', 'created_at', 'create_user', 'isCalc', 'date', 'title', 'amount', 'pocket', 'category', 'subcategory', 'memo']
+
+class PocketSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Pocket
+        fields = ['id', 'create_user', 'category', 'name', 'amount']
