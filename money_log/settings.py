@@ -7,17 +7,18 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
+
+ALLOWED_HOSTS = ['waterleaper.net', '217.178.130.18']
+
 # SECURITY WARNING: keep the secret key used in production secret!
 try:
     from .local_settings import *
 except ImportError:
     pass
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.11.87', '192.168.11.92']
-
+SECRET_KEY = 'thiefuvxtj77&8jpji0&aaiz9n&$v_ma+p@z5y%1-_@++pgfy^'
 
 # Application definition
 
@@ -51,6 +52,7 @@ CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     "http://192.168.11.87:3000",
+    'https://waterleaper.net',
 ]
 
 REST_FRAMEWORK = {
