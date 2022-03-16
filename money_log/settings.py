@@ -1,8 +1,11 @@
 import os
+from pathlib import Path
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -17,8 +20,6 @@ try:
     from .local_settings import *
 except ImportError:
     pass
-
-SECRET_KEY = 'thiefuvxtj77&8jpji0&aaiz9n&$v_ma+p@z5y%1-_@++pgfy^'
 
 # Application definition
 
@@ -54,6 +55,8 @@ CORS_ORIGIN_WHITELIST = [
     "http://192.168.11.87:3000",
     'https://waterleaper.net',
 ]
+# レスポンスを公開する
+CORS_ALLOW_CREDENTIALS = True
 
 REST_FRAMEWORK = {
 		# 認証を通ったユーザーがViewを見ることができる
@@ -105,6 +108,11 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# 追記
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
 
 
 # Password validation
